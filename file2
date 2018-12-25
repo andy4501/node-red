@@ -1,0 +1,107 @@
+[
+    {
+        "id": "56b17b89.9d5b04",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "8be6ba1a.a7a6f8",
+        "type": "inject",
+        "z": "56b17b89.9d5b04",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 119.18056106567383,
+        "y": 133.96181869506836,
+        "wires": [
+            [
+                "9661f77d.003ff8"
+            ]
+        ]
+    },
+    {
+        "id": "9661f77d.003ff8",
+        "type": "function",
+        "z": "56b17b89.9d5b04",
+        "name": "Payload",
+        "func": "msg.headers={\n  deviceKey: \"0YVuU09DmdM0Tjiq\"  \n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 308.19448471069336,
+        "y": 124.46526336669922,
+        "wires": [
+            [
+                "23c24.c754e3dc4",
+                "646a9196.f6e95"
+            ]
+        ]
+    },
+    {
+        "id": "646a9196.f6e95",
+        "type": "http request",
+        "z": "56b17b89.9d5b04",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/DGUSrYVJ/datachannels/Temperature/datapoints.csv",
+        "tls": "",
+        "x": 496.1909637451172,
+        "y": 115.6215410232544,
+        "wires": [
+            [
+                "104f82a4.3c488d",
+                "ec086513.9d9cb8"
+            ]
+        ]
+    },
+    {
+        "id": "104f82a4.3c488d",
+        "type": "http response",
+        "z": "56b17b89.9d5b04",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 645.1875114440918,
+        "y": 153.989595413208,
+        "wires": []
+    },
+    {
+        "id": "ec086513.9d9cb8",
+        "type": "debug",
+        "z": "56b17b89.9d5b04",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 588.1875152587891,
+        "y": 272.09375762939453,
+        "wires": []
+    },
+    {
+        "id": "23c24.c754e3dc4",
+        "type": "http request",
+        "z": "56b17b89.9d5b04",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/DGUSrYVJ/datachannels/Humidity/datapoints.csv",
+        "tls": "",
+        "x": 374.017333984375,
+        "y": 286.01041412353516,
+        "wires": [
+            [
+                "104f82a4.3c488d",
+                "ec086513.9d9cb8"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,101 @@
+[
+    {
+        "id": "8cb66a89.5fc338",
+        "type": "tab",
+        "label": "Flow 7",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "37324d6b.7729f2",
+        "type": "http in",
+        "z": "8cb66a89.5fc338",
+        "name": "",
+        "url": "/pin17",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 97.18055725097656,
+        "y": 142.78820037841797,
+        "wires": [
+            [
+                "d6753a16.b23328"
+            ]
+        ]
+    },
+    {
+        "id": "16bc7cba.a0dab3",
+        "type": "rpi-gpio in",
+        "z": "8cb66a89.5fc338",
+        "name": "GPIO17",
+        "pin": "11",
+        "intype": "up",
+        "debounce": "25",
+        "read": false,
+        "x": 91.19096374511719,
+        "y": 327.1284866333008,
+        "wires": [
+            [
+                "bb84a5bd.ee79c8"
+            ]
+        ]
+    },
+    {
+        "id": "bb84a5bd.ee79c8",
+        "type": "function",
+        "z": "8cb66a89.5fc338",
+        "name": "SET GPIO",
+        "func": "global.set(\"GPIO\",msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 249.19444274902344,
+        "y": 334.3507022857666,
+        "wires": [
+            [
+                "406ad18e.cf795"
+            ]
+        ]
+    },
+    {
+        "id": "d6753a16.b23328",
+        "type": "function",
+        "z": "8cb66a89.5fc338",
+        "name": "GET GPIO",
+        "func": "msg.payload=global.get(\"GPIO\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 293.1909866333008,
+        "y": 145.35764122009277,
+        "wires": [
+            [
+                "406ad18e.cf795",
+                "b69f39c6.a6b198"
+            ]
+        ]
+    },
+    {
+        "id": "406ad18e.cf795",
+        "type": "debug",
+        "z": "8cb66a89.5fc338",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 463.19444274902344,
+        "y": 276.31250381469727,
+        "wires": []
+    },
+    {
+        "id": "b69f39c6.a6b198",
+        "type": "http response",
+        "z": "8cb66a89.5fc338",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 565.1840362548828,
+        "y": 120.2013931274414,
+        "wires": []
+    }
+]

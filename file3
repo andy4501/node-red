@@ -1,0 +1,88 @@
+[
+    {
+        "id": "929464b5.d27468",
+        "type": "tab",
+        "label": "Flow 5",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c9894b4b.bc5858",
+        "type": "inject",
+        "z": "929464b5.d27468",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 90.00000762939453,
+        "y": 222.0104103088379,
+        "wires": [
+            [
+                "babe39ac.d69018"
+            ]
+        ]
+    },
+    {
+        "id": "babe39ac.d69018",
+        "type": "function",
+        "z": "929464b5.d27468",
+        "name": "Padload",
+        "func": "msg.headers={\n    deviceKey: \"0YVuU09DmdM0Tjiq\"\n};\nmsg.payload=\"Temperature,,253.3\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 265.1840362548828,
+        "y": 226.5729217529297,
+        "wires": [
+            [
+                "30094cbe.37f5d4"
+            ]
+        ]
+    },
+    {
+        "id": "30094cbe.37f5d4",
+        "type": "http request",
+        "z": "929464b5.d27468",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "url": "https://api.mediatek.com/mcs/v2/devices/DGUSrYVJ/datapoints.csv",
+        "tls": "",
+        "x": 388.18751525878906,
+        "y": 317.5104217529297,
+        "wires": [
+            [
+                "769a8c7e.01e5d4",
+                "852eeb68.cbe668"
+            ]
+        ]
+    },
+    {
+        "id": "769a8c7e.01e5d4",
+        "type": "http response",
+        "z": "929464b5.d27468",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 585.1909790039062,
+        "y": 294.21180152893066,
+        "wires": []
+    },
+    {
+        "id": "852eeb68.cbe668",
+        "type": "debug",
+        "z": "929464b5.d27468",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 525.1840362548828,
+        "y": 402.5277862548828,
+        "wires": []
+    }
+]
